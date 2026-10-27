@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "io.github.samfun75"
-version = libs.versions.ktvine.get()
+version = providers.gradleProperty("soundboundVersion").orElse(libs.versions.ktvine).get()
 
 // Published artifact name, and what the Dokka site calls this module.
 val artifactId = "ktvine"
