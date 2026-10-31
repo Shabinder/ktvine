@@ -153,6 +153,10 @@ tasks.register<Test>("integrationTest") {
         isFailOnNoMatchingTests = false
     }
     System.getProperty("wvd.pool.dir")?.let { systemProperty("wvd.pool.dir", it) }
+    // forward research-harness props (Amazon challenge build)
+    for (k in listOf("wvd.path", "wvd.list.file", "amazon.pssh.b64", "amazon.chal.out", "export.run.dir", "rotation.cap")) {
+        System.getProperty(k)?.let { systemProperty(k, it) }
+    }
     testLogging { showStandardStreams = true }
     outputs.upToDateWhen { false }
 }
