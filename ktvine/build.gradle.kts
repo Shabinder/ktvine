@@ -136,6 +136,9 @@ tasks.named<Test>("jvmTest") {
         excludeTestsMatching(integrationTestPattern)
         isFailOnNoMatchingTests = false
     }
+    // Opt-in pool dir for the export-to-raw validation (Phase 1a); absent -> the test skips.
+    System.getProperty("wvd.pool.dir")?.let { systemProperty("wvd.pool.dir", it) }
+    testLogging { showStandardStreams = true }
 }
 
 tasks.register<Test>("integrationTest") {
@@ -149,6 +152,8 @@ tasks.register<Test>("integrationTest") {
         includeTestsMatching(integrationTestPattern)
         isFailOnNoMatchingTests = false
     }
+    System.getProperty("wvd.pool.dir")?.let { systemProperty("wvd.pool.dir", it) }
+    testLogging { showStandardStreams = true }
     outputs.upToDateWhen { false }
 }
 
