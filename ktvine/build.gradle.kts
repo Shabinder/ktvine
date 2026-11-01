@@ -154,7 +154,7 @@ tasks.register<Test>("integrationTest") {
     }
     System.getProperty("wvd.pool.dir")?.let { systemProperty("wvd.pool.dir", it) }
     // forward research-harness props (Amazon challenge build)
-    for (k in listOf("wvd.path", "wvd.list.file", "amazon.pssh.b64", "amazon.chal.out", "export.run.dir", "rotation.cap")) {
+    for (k in listOf("wvd.path", "wvd.list.file", "amazon.pssh.b64", "amazon.chal.out", "export.run.dir", "rotation.cap", "amazon.service_cert.b64", "amazon.service_cert.path", "wvd.dir", "amazon.chal.dir", "amazon.wvd.limit")) {
         System.getProperty(k)?.let { systemProperty(k, it) }
     }
     testLogging { showStandardStreams = true }
